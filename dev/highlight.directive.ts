@@ -5,10 +5,14 @@ import {Renderer} from "angular2/core";
 
 @Directive({
     selector: '[myHighlight]',
-    inputs: ['highlightColor:myHighlight']
+    inputs: ['highlightColor:myHighlight'],
+    host: {
+        '(mouseenter)': 'onMouseEnter()',
+        '(mouseleave)': 'onMouseLeave()'
+    }
 })
 
-export class HighlightDirective implements OnInit {
+export class HighlightDirective {
     private _defaultColor = 'green';
     highlightColor:string;
 
@@ -16,8 +20,20 @@ export class HighlightDirective implements OnInit {
     }
 
 
-    ngOnInit():any {
-        this._renderer.setElementStyle(this._elRef.nativeElement, 'background-color', this.highlightColor || this._defaultColor);
+    //ngOnInit():any {
+    //    this._renderer.setElementStyle(this._elRef.nativeElement, 'background-color', this.highlightColor || this._defaultColor);
+    //}
+
+    onMouseEnter() {
+        this.highlight(this.highlightColor || this._defaultColor);
+    }
+
+    onMouseLeave() {
+        this.highlight(null);
+    }
+
+    private highlight(color:string) {
+        this._renderer.setElementStyle(this._elRef.nativeElement, 'background-color', color);
     }
 
 }
