@@ -1,7 +1,7 @@
 # Angular 2 Directives
 
 ## Description
-This repo has tasks of the third chapter in the Udemy Angular 2 tutorial 
+This repo has tasks of the third chapter in the Udemy Angular 2 tutorial. It takes you through the three types of directives: Property Binding, Attribute Directives, and Structural Directives
 ## Usage
 Follow the following steps and you're good to go! Important: Typescript and npm has to be installed on your machine!
 
