@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {UnlessDirective} from "./unless.directive";
 
 @Component({
     selector: 'my-structural-directives',
@@ -36,9 +37,20 @@ import {Component} from 'angular2/core';
                 <template [ngSwitchWhen]="'green'"><span style="color: green"><br>Colour is green</span></template>
                 <template ngSwitchDefault><span><br>Don't know the colour</span></template>
             </div>
-
         </section>
-    `
+        <section class="directive">
+            <h2>Custom Directive: *myUnless</h2>
+            <div>
+                Enter true or false
+                <br>
+                <input type="text" #condition (keyup)="0">
+            </div>
+            <div *myUnless="condition.value != 'false'">
+                Only shown if 'false' was entered
+            </div>
+        </section>
+    `,
+    directives:[UnlessDirective]
 })
 
 export class StructuralDirectives {
