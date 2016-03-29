@@ -1,4 +1,4 @@
-# Angular 2 Beta Boilerplate
+# Angular 2 Directives
 
 ## Description
 This repo has tasks of the third chapter in the Udemy Angular 2 tutorial 
