@@ -4,6 +4,7 @@ import {ListItem} from "../list-item";
 import {ShoppingListItemComponent} from "./shopping-list-item.component";
 import {ShoppingListService} from "./shopping-list.service";
 import {OnInit} from "angular2/core";
+import {FilterPipe} from "../filter.pipe";
 
 @Component({
     selector: 'shopping-list',
@@ -13,9 +14,11 @@ import {OnInit} from "angular2/core";
         </section>
         <section>
             <h3>My List</h3>
+            Filter:
+            <input type="text" #filter (keyup)="0">
             <div class="lit">
                 <ul>
-                    <li *ngFor="#listItem of listItems" (click)="onSelect(listItem)">{{listItem.name}}({{listItem.amount}})</li>
+                    <li *ngFor="#listItem of listItems | myFilter:filter.value" (click)="onSelect(listItem)">{{listItem.name}}({{listItem.amount}})</li>
                 </ul>
             </div>
         </section>
@@ -24,7 +27,8 @@ import {OnInit} from "angular2/core";
         </section>
     `,
     directives: [ShoppingListNewItemComponent, ShoppingListItemComponent],
-    providers: [ShoppingListService]
+    providers: [ShoppingListService],
+    pipes:[FilterPipe]
 })
 
 export class ShoppingListComponent implements OnInit {
