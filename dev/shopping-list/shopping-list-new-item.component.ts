@@ -45,6 +45,7 @@ export class ShoppingListNewItemComponent implements OnInit {
     }
 
     onSubmit() {
+        //alert('Hello');
         this._shoppingListService.insertItem({name: this.item.name, amount: this.item.amount});
     }
 }
